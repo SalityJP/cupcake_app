@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cupcakes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Cupcakes</h1>
+    </header>
+    
+    <main>
+        <section id="form-section">
+            <h2>Cadastrar Novo Cupcake</h2>
+            <form id="cupcake-form">
+                <label for="name">Nome do Cupcake:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="ingredients">Ingredientes:</label>
+                <input type="text" id="ingredients" name="ingredients" required>
+
+                <label for="price">Preço:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+        </section>
+        <section id="cupcake-list">
+            <h2>Lista de Cupcakes</h2>
+            <ul id="cupcake-items">
+                {% for cupcake in cupcakes %}
+                    <li>{{ cupcake['name'] }} - Ingredientes: {{ cupcake['ingredients'] }} - Preço: R$ {{ cupcake['price'] }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
